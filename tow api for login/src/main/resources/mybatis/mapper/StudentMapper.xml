@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.system.teach.mapper.StudentMapper">
+<!--
+    <select id="queryStudentInfoById" resultType="com.system.teach.pojo.StudentInfo">
+        SELECT * FROM student_info where student_id = #{studentId}
+    </select>
+
+    <insert id="addStudentInfo">
+        INSERT INTO student_info
+        (student_name,student_gender,student_racial,student_age,student_jointime,student_major,student_class,
+        student_first_parent,student_first_parent_work,student_second_parent,student_second_parent_work,student_address,
+        student_phone,student_email,student_photo)
+        VALUE (#{studentName},#{studentGender},#{studentRacial},#{studentAge},#{studentJoinTime},#{studentMajor},
+        #{studentClass},#{studentFirstParent},#{studentFirstParentWork},#{studentSecondParent},#{studentSecondParentWork},
+        #{studentAddress},#{studentPhone},#{studentEmail},#{studentPhoto})
+    </insert>
+
+    <update id="">
+
+    </update>
+
+    <select id="" resultType="com.system.teach.pojo.StudentAccount">
+
+    </select>
+ -->
+    <select id="queryStudentInfoById" resultType="com.system.teach.pojo.StudentInfo">
+        SELECT * FROM student_info WHERE student_id = #{studentId}
+    </select>
+
+    <insert id="createStudentInfo">
+        INSERT INTO
+    </insert>
+
+    <update id="">
+
+    </update>
+</mapper>
