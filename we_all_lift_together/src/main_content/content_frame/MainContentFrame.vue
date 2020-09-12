@@ -1,10 +1,12 @@
 <template>
-  
+  <div>
+
+  </div>
 </template>
 
 <script>
   export default {
-    name: "Request404"
+    name: "MainContentFrame"
   }
 </script>
 

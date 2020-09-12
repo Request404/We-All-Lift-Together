@@ -19,7 +19,7 @@
     <div id="login_button" ref="login_button">登录</div>
     <div id="resets_fun_box">
       <span class="call_forget_password" @click="resetPassword">忘记密码？</span>
-      <span class="call_forget_password">联系我们</span>
+      <span class="call_forget_password" @click="linkUs">联系我们</span>
     </div>
   </div>
 </template>
@@ -47,6 +47,9 @@
       },
       resetPassword(){
         this.$emit('resetPassword','reset')
+      },
+      linkUs(){
+        this.$emit('linkUs','linkUs')
       }
     },
     updated() {

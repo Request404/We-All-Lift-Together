@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import HomeAccountPane from "@/components/Home/HomeAccountPane";
+import HomeAccountPane from "@/components/home/HomeAccountPane";
 
 export default {
   name: "HomePage",

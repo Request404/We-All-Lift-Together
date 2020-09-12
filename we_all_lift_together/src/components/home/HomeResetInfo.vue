@@ -12,7 +12,7 @@
     <div id="reset_button" ref="reset_button">验证</div>
     <div id="return_login_box">
       <span class="call_return_login" @click="returnLogin">返回登录</span>
-      <span class="call_return_login">联系我们</span>
+      <span class="call_return_login" @click="linkUs">联系我们</span>
     </div>
   </div>
 </template>
@@ -49,6 +49,9 @@ export default {
     returnLogin(){
       this.$emit('returnLogin','login')
     },
+    linkUs(){
+      this.$emit('linkUs','linkUs')
+    }
   },
   updated() {
     if (this.username.trim()&&this.emailPass){

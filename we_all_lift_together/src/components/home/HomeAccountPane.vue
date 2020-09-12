@@ -1,13 +1,17 @@
 <template>
   <div id="home_account_warp" ref="home_account_warp">
-   <home-login v-show="accountOperate=='login'" @resetPassword="resetPassword"></home-login>
-   <home-reset-info v-show="accountOperate=='reset'" @returnLogin="returnLogin"></home-reset-info>
+   <home-login v-show="accountOperate=='login'" @resetPassword="resetPassword" @linkUs="linkUs"></home-login>
+   <home-reset-info v-show="accountOperate=='reset'" @returnLogin="returnLogin" @linkUs="linkUs"></home-reset-info>
+   <home-alter-password v-show="accountOperate=='alter'" @returnLogin="returnLogin" @linkUs="linkUs"></home-alter-password>
+   <line-us v-show="accountOperate=='linkUs'" @returnLogin="returnLogin"></line-us>
  </div>
 </template>
 
 <script>
-import HomeLogin from "@/components/Home/HomeLogin";
-import HomeResetInfo from "@/components/Home/HomeResetInfo";
+import HomeLogin from "@/components/home/HomeLogin";
+import HomeResetInfo from "@/components/home/HomeResetInfo";
+import HomeAlterPassword from "@/components/home/HomeAlterPassword";
+import LineUs from "@/components/home/LinkUs";
 
 export default {
   name: "HomeAccountPane",
@@ -18,15 +22,40 @@ export default {
   },
   methods:{
     resetPassword(reset){
-      setTimeout(()=>{this.accountOperate = reset},750)
+      this.$store.commit('needLoading',true)
+      setTimeout(()=>{
+        this.accountOperate = reset
+        this.$store.commit('needLoading',false)
+      },500)
+
     },
     returnLogin(login){
-      setTimeout(()=>{this.accountOperate = login},750)
+      this.$store.commit('needLoading',true)
+      setTimeout(()=>{
+        this.accountOperate = login
+        this.$store.commit('needLoading',false)
+      },500)
+    },
+    alterPassword(alter){
+      this.$store.commit('needLoading',true)
+      setTimeout(()=>{
+        this.accountOperate = alter
+        this.$store.commit('needLoading',false)
+      },500)
+    },
+    linkUs(linkUs){
+      this.$store.commit('needLoading',true)
+      setTimeout(()=>{
+        this.accountOperate = linkUs
+        this.$store.commit('needLoading',false)
+      },500)
     }
   },
   components:{
     HomeLogin,
-    HomeResetInfo
+    HomeResetInfo,
+    HomeAlterPassword,
+    LineUs
   },
   mounted() {
     setTimeout(()=>{

@@ -1,16 +1,21 @@
 <template>
   <div id="app">
-    <home-page></home-page>
+<!--    <home-page v-show="true"></home-page>-->
+<!--    <request-deny v-show="false"></request-deny>-->
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+    <loading v-if="$store.state._needLoading_"></loading>
   </div>
 </template>
 
 <script>
-import HomePage from "@/components/Home/HomePage";
+import Loading from "@/components/commons/Loading";
 
 export default {
   name: 'App',
   components: {
-    HomePage
+    Loading
   }
 }
 </script>
