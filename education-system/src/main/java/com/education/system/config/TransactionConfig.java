@@ -10,14 +10,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 
 
-//开启事务控制
-@Configuration
-@EnableTransactionManagement
-public class TransactionConfig {
-
-    @Bean
-    @Qualifier("transactionManager")
-    public PlatformTransactionManager txManager(@Qualifier("dataSource") DataSource dataSource) {
-        return new DataSourceTransactionManager(dataSource);
-    }
-}
+////开启事务控制
+//@Configuration
+//@EnableTransactionManagement
+//public class TransactionConfig {
+//
+//    @Bean
+//    @Qualifier("transactionManager")
+//    public PlatformTransactionManager txManager(@Qualifier("dataSource") DataSource dataSource) {
+//        return new DataSourceTransactionManager(dataSource);
+//    }
+//}

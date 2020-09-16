@@ -27,11 +27,11 @@ public class DruidConfig {
     @Bean
     public ServletRegistrationBean statViewServlet(){
         ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
-        Map<String,String> initParamentes = new HashMap<>();
-        initParamentes.put("loginUsername","admin");
-        initParamentes.put("loginPassword","123456");
-        initParamentes.put("allow","");
-        bean.setInitParameters(initParamentes);
+        Map<String,String> initParameters = new HashMap<>();
+        initParameters.put("loginUsername","admin");
+        initParameters.put("loginPassword","123456");
+        initParameters.put("allow","");
+        bean.setInitParameters(initParameters);
         return bean;
     }
 
@@ -40,9 +40,9 @@ public class DruidConfig {
     public FilterRegistrationBean webStatFilter(){
         FilterRegistrationBean bean = new FilterRegistrationBean();
         bean.setFilter(new WebStatFilter());
-        Map<String,String> initParamentes = new HashMap<>();
-        initParamentes.put("exclusions","*.js,*.css,*html,/druid/*");
-        bean.setInitParameters(initParamentes);
+        Map<String,String> initParameters = new HashMap<>();
+        initParameters.put("exclusions","*.js,*.css,*html,/druid/*");
+        bean.setInitParameters(initParameters);
         bean.setUrlPatterns(Arrays.asList("/*"));
         return bean;
     }

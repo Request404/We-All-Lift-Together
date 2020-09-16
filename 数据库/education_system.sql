@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80020
 File Encoding         : 65001
 
-Date: 2020-09-16 22:47:20
+Date: 2020-09-17 00:34:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,6 +30,10 @@ CREATE TABLE `admin_account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of admin_account
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for course_table
 -- ----------------------------
 DROP TABLE IF EXISTS `course_table`;
@@ -38,8 +42,8 @@ CREATE TABLE `course_table` (
   `teacher_id` int NOT NULL,
   `teacher_name` varchar(255) DEFAULT NULL,
   `course_name` varchar(255) NOT NULL,
-  `start_time` varchar(0) NOT NULL,
-  `end_time` varchar(0) NOT NULL,
+  `start_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `end_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `class_name` varchar(255) NOT NULL,
   `course_credit` decimal(10,1) NOT NULL,
   `course_date` varchar(255) NOT NULL,
@@ -53,6 +57,10 @@ CREATE TABLE `course_table` (
   CONSTRAINT `course_table_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `teacher_info` (`teacher_id`),
   CONSTRAINT `course_table_ibfk_2` FOREIGN KEY (`teacher_name`) REFERENCES `teacher_info` (`teacher_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of course_table
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for elective_table
@@ -77,6 +85,10 @@ CREATE TABLE `elective_table` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of elective_table
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for student_account
 -- ----------------------------
 DROP TABLE IF EXISTS `student_account`;
@@ -90,6 +102,10 @@ CREATE TABLE `student_account` (
   CONSTRAINT `student_account_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student_info` (`student_id`),
   CONSTRAINT `student_account_ibfk_2` FOREIGN KEY (`student_email`) REFERENCES `student_info` (`student_email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of student_account
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for student_affairs
@@ -117,6 +133,10 @@ CREATE TABLE `student_affairs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of student_affairs
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for student_elective
 -- ----------------------------
 DROP TABLE IF EXISTS `student_elective`;
@@ -141,6 +161,10 @@ CREATE TABLE `student_elective` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of student_elective
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for student_info
 -- ----------------------------
 DROP TABLE IF EXISTS `student_info`;
@@ -148,8 +172,8 @@ CREATE TABLE `student_info` (
   `student_id` int NOT NULL AUTO_INCREMENT,
   `student_name` varchar(255) NOT NULL,
   `student_gender` varchar(255) NOT NULL,
-  `student_brithday` date NOT NULL,
-  `student_recial` varchar(255) NOT NULL,
+  `student_birthday` date NOT NULL,
+  `student_racial` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `student_native_place` varchar(255) NOT NULL,
   `student_join_time` date NOT NULL,
   `student_major` varchar(255) NOT NULL,
@@ -161,12 +185,17 @@ CREATE TABLE `student_info` (
   `student_contact_phone` varchar(255) NOT NULL,
   `student_email` varchar(255) NOT NULL,
   `student_remark` varchar(255) DEFAULT NULL,
-  `studeent_photo` varchar(255) DEFAULT NULL,
+  `student_photo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`student_id`),
   KEY `student_email` (`student_email`),
   KEY `student_class` (`student_class`),
   KEY `student_name` (`student_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=10011 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1000002 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of student_info
+-- ----------------------------
+INSERT INTO `student_info` VALUES ('1000001', 'zhangsan', '男', '2000-09-03', '汉', '广东省广州市', '2019-09-01', '烹饪技术', '19颠勺2班', '12345678', '134131452011', '广东省广州市红红火火恍恍惚惚102', 'lisi', '12345678900', '123456@123.com', '真正的大师永远都怀着一颗学徒的心', '/test.jpg');
 
 -- ----------------------------
 -- Table structure for student_transcript
@@ -202,6 +231,10 @@ CREATE TABLE `student_transcript` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of student_transcript
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for teacher_account
 -- ----------------------------
 DROP TABLE IF EXISTS `teacher_account`;
@@ -217,6 +250,10 @@ CREATE TABLE `teacher_account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of teacher_account
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for teacher_info
 -- ----------------------------
 DROP TABLE IF EXISTS `teacher_info`;
@@ -225,7 +262,7 @@ CREATE TABLE `teacher_info` (
   `teacher_name` varchar(255) NOT NULL,
   `teacher_gender` varchar(255) NOT NULL,
   `teacher_birthday` date NOT NULL,
-  `teacher_recial` varchar(255) NOT NULL,
+  `teacher_racial` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `teacher_native_place` varchar(255) NOT NULL,
   `teacher_marital_status` varchar(255) NOT NULL COMMENT '婚姻状况',
   `teacher_join_time` date NOT NULL,
@@ -241,3 +278,7 @@ CREATE TABLE `teacher_info` (
   KEY `teacher_eamil` (`teacher_eamil`),
   KEY `teacher_name` (`teacher_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of teacher_info
+-- ----------------------------

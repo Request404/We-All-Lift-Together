@@ -24,7 +24,7 @@ public class TeacherUserServiceImpl implements TeacherUserService {
     public Integer queryAccountStatus(Integer teacherId) {
         TeacherAccount teacherAccount = teacherAccountMapper.selectByPrimaryKey(teacherId);
         if(teacherAccount!=null){
-            return teacherAccount.getAccountState();
+            return teacherAccount.getTeacherStatus();
         }else {
             return 0;
         }
