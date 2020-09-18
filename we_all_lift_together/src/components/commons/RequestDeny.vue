@@ -16,13 +16,30 @@
     name: "RequestDeny",
     data(){
       return{
-        requestState: 404,
-        denyWord: "page none found"
+        requestState: this.$store.state._responseStatus_
+      }
+    },
+    computed:{
+      denyWord(){
+        if (this.requestState === 200){
+          return "都没报错,来干嘛!!!"
+        }
+        if (this.requestState === 404){
+          return "请求被拒绝了!!!"
+        }if (this.requestState === 500){
+          return "在bug上写了个程序,很抱歉"
+        }else {
+          return "发生未知错误了!!!"
+        }
       }
     },
     methods:{
       returnHome(){
-        this.$router.push('/')
+        this.$store.commit('needLoading',true)
+        setTimeout(()=>{
+          this.$router.push('/')
+          this.$store.commit('needLoading',false)
+        },500)
       }
     }
   }

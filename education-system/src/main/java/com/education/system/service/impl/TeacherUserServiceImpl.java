@@ -35,7 +35,7 @@ public class TeacherUserServiceImpl implements TeacherUserService {
         TeacherAccountExample example = new TeacherAccountExample();
         example.createCriteria().andTeacherIdEqualTo(teacherAccount.getTeacherId()).andTeacherEmailEqualTo(teacherAccount.getTeacherEmail());
         List<TeacherAccount> accounts = teacherAccountMapper.selectByExample(example);
-        return accounts != null;
+        return accounts.size() != 0;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class TeacherUserServiceImpl implements TeacherUserService {
         TeacherAccountExample example = new TeacherAccountExample();
         example.createCriteria().andTeacherIdEqualTo(teacherAccount.getTeacherId()).andTeacherPasswordEqualTo(teacherAccount.getTeacherPassword());
         List<TeacherAccount> accounts = teacherAccountMapper.selectByExample(example);
-        return accounts != null;
+        return accounts.size() != 0;
     }
 
     @Override

@@ -38,19 +38,16 @@ public class StudentUserServiceImpl implements StudentUserService {
         StudentAccountExample example = new StudentAccountExample();
         example.createCriteria().andStudentIdEqualTo(studentAccount.getStudentId()).andStudentEmailEqualTo(studentAccount.getStudentEmail());
         List<StudentAccount> accounts = studentAccountMapper.selectByExample(example);
-        if(accounts!=null){
-            return true;
-        }else {
-            return false;
-        }
+        return accounts.size() != 0;
     }
 
     @Override
     public boolean userLogin(StudentAccount studentAccount) {
         StudentAccountExample example = new StudentAccountExample();
         example.createCriteria().andStudentIdEqualTo(studentAccount.getStudentId()).andStudentPasswordEqualTo(studentAccount.getStudentPassword());
-        List<StudentAccount> list = studentAccountMapper.selectByExample(example);
-        return list.get(0) != null;
+        List<StudentAccount> accounts = studentAccountMapper.selectByExample(example);
+        System.out.println(accounts);
+        return accounts.size() != 0;
     }
 
     @Override

@@ -3,13 +3,15 @@
     <p id="home_alter_headline">修改密码</p>
     <div class="alter_input_warp">
       <label class="alter_input_label" for="reset_password">密码：</label>
-      <input class="alter_input" id="reset_password" type="password" v-model="password">
+      <input class="alter_input" id="reset_password" :type="psdType" v-model="password" @keyup.enter="alterCommit($store.state._verificationIdentity_,$store.state._verificationAccount_)">
+      <img v-show="!Visible" @click="passwordVisible" class="password_visible_eye" src="../../assets/img/home_img/invisible_eye.svg" alt="">
+      <img v-show="Visible" @click="passwordVisible" class="password_visible_eye" src="../../assets/img/home_img/visible_eye.svg" alt="">
     </div>
     <div class="alter_input_warp" ref="confirm_password">
       <label class="alter_input_label" for="confirm_password">确认：</label>
-      <input class="alter_input" id="confirm_password" type="password" v-model="confirm">
+      <input class="alter_input" id="confirm_password" :type="psdType" v-model="confirm" @keyup.enter="alterCommit($store.state._verificationIdentity_,$store.state._verificationAccount_)">
     </div>
-    <div id="alter_button" ref="alter_button">
+    <div id="alter_button" ref="alter_button" @click="alterCommit($store.state._verificationIdentity_,$store.state._verificationAccount_)">
       确认修改
     </div>
     <div id="alter_fun_box">
@@ -20,18 +22,23 @@
 </template>
 
 <script>
+  import {asyn} from "@/network/asyn";
+
   export default {
     name: "HomeAlterPassword",
     data(){
       return{
+        Visible: false,
+        psdType: "password",
         password:'',
         confirm:'',
+        infoComplete: false,
         pass_confirm: false
       }
     },
     watch:{
       confirm(){
-        if (this.password==this.confirm){
+        if (this.password===this.confirm){
           this.$refs.confirm_password.style.borderColor="#27ae60"
           this.pass_confirm=true
         }else {
@@ -46,6 +53,64 @@
       },
       linkUs(){
         this.$emit('linkUs','linkUs')
+      },
+      passwordVisible(){
+        this.Visible = !this.Visible
+        if(this.Visible){
+          this.psdType = 'text'
+        }else {
+          this.psdType = 'password'
+        }
+      },
+      alterCommit(identity,userId){
+        if(this.infoComplete){
+          switch (identity) {
+            case 'student':
+              asyn ({
+                methods: 'post',
+                url: '/student/alterAccountInfo',
+                data: {
+                  studentId: userId,
+                  studentPassword: this.password
+                }
+              }).then(rs=>{
+
+              }).catch(err=>{
+
+              });
+              break;
+            case 'teacher':
+              asyn ({
+                methods: 'post',
+                url: '/teacher/alterAccountInfo',
+                data: {
+                  teacherId: userId,
+                  teacherPassword: this.password
+                }
+              }).then(rs=>{
+
+              }).catch(err=>{
+
+              })
+              break;
+            case 'admin':
+              asyn ({
+                methods: 'post',
+                url: '/teacher/alterAccountInfo',
+                data: {
+                  administrationId: userId,
+                  administrationPassword: this.password
+                }
+              }).then(rs=>{
+
+              }).catch(err=>{
+
+              })
+              break;
+            default:
+              console.log("未知身份");
+          }
+        }
       }
     },
     updated(){
@@ -54,8 +119,10 @@
         this.pass_confirm=false
       }
       if (this.pass_confirm){
+        this.infoComplete = true
         this.$refs.alter_button.style.backgroundColor="#27ae60"
       }else {
+        this.infoComplete = false
         this.$refs.alter_button.style.backgroundColor="rgba(220,220,220,.9)"
       }
     }
@@ -93,6 +160,14 @@
     padding: 0 3px;
     margin: 1px 0;
   }
+  .password_visible_eye{
+    width: 1.3rem;
+    height: auto;
+    position: absolute;
+    right: 8px;
+    top: 30%;
+    cursor: pointer;
+  }
   #alter_button{
     width: 6.5rem;
     height: 1.5rem;
@@ -125,7 +200,7 @@
     border-radius: 1px;
     border: none;
     outline: none;
-    background-color: rgba(230,230,230,.9);
+    background-color: rgba(230,230,230,.8);
   }
   input::-ms-clear,
   input::-ms-reveal{display: none;}

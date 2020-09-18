@@ -1,5 +1,6 @@
 <template>
-  $END$
+<!--  学生课表组件-->
+  <div></div>
 </template>
 
 <script>

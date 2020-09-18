@@ -30,7 +30,7 @@ public class AdministrationUserServiceImpl implements AdministrationUserService 
         AdminAccountExample example = new AdminAccountExample();
         example.createCriteria().andAdminIdEqualTo(adminAccount.getAdminId()).andAdminEmailEqualTo(adminAccount.getAdminEmail());
         List<AdminAccount> accounts = adminAccountMapper.selectByExample(example);
-        return accounts != null;
+        return accounts.size() != 0;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class AdministrationUserServiceImpl implements AdministrationUserService 
         AdminAccountExample example = new AdminAccountExample();
         example.createCriteria().andAdminIdEqualTo(adminAccount.getAdminId()).andAdminPasswordEqualTo(adminAccount.getAdminPassword());
         List<AdminAccount> accounts = adminAccountMapper.selectByExample(example);
-        return accounts != null;
+        return accounts.size() != 0;
     }
 
     @Override

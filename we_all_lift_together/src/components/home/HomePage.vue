@@ -26,5 +26,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: anim 60s linear;
   }
+
 </style>

@@ -7,6 +7,10 @@ import actions from './actions'
 Vue.use(Vuex)
 
 const  state = {
+  _verificationIdentity_: null,
+  _verificationAccount_: null,
+
+  _responseStatus_: 200,
   _needLoading_: false,
   _loginState_: null,
   _UserIdentity_: null,

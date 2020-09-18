@@ -1,5 +1,6 @@
 <template>
-  $END$
+<!--  学生成绩组件-->
+  <div></div>
 </template>
 
 <script>

@@ -1,9 +1,9 @@
 <template>
   <div id="home_account_warp" ref="home_account_warp">
-   <home-login v-show="accountOperate=='login'" @resetPassword="resetPassword" @linkUs="linkUs"></home-login>
-   <home-reset-info v-show="accountOperate=='reset'" @returnLogin="returnLogin" @linkUs="linkUs"></home-reset-info>
-   <home-alter-password v-show="accountOperate=='alter'" @returnLogin="returnLogin" @linkUs="linkUs"></home-alter-password>
-   <line-us v-show="accountOperate=='linkUs'" @returnLogin="returnLogin"></line-us>
+   <home-login v-show="accountOperate==='login'" @resetPassword="resetPassword" @linkUs="linkUs"></home-login>
+   <home-reset-info v-show="accountOperate==='reset'" @returnLogin="returnLogin" @alterPassword="alterPassword" @linkUs="linkUs"></home-reset-info>
+   <home-alter-password v-show="accountOperate==='alter'" @returnLogin="returnLogin" @linkUs="linkUs"></home-alter-password>
+   <line-us v-show="accountOperate==='linkUs'" @returnLogin="returnLogin"></line-us>
  </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
   name: "HomeAccountPane",
   data(){
     return{
-      accountOperate: 'login'
+      accountOperate: 'alter'
     }
   },
   methods:{
@@ -81,7 +81,9 @@ export default {
     /*display: grid;*/
     /*justify-content: center;*/
     /*justify-items: center;*/
-    background-color: rgba(225,225,225,.88);
+    background-image: url("../../assets/img/home_img/login_pane_background.png");
+    background-position: center center;
+    background-size: auto 100%;
     border-radius: 5px;
     opacity: 0;
     font-weight: 100;

@@ -1,5 +1,6 @@
 <template>
-  $END$
+<!--  学生事务申请-->
+  <div></div>
 </template>
 
 <script>

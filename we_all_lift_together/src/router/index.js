@@ -36,7 +36,7 @@ const routes = [
     children:[
       {
         path:'',
-        redirect: '/request-deny',
+        redirect: '',
       },
       {
         path:'student-system',
