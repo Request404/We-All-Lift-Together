@@ -62,49 +62,62 @@
           this.psdType = 'password'
         }
       },
+      alterRequestSuccess(rs){
+        if (rs.data){
+          window.alert("密码修改成功")
+          this.$emit('returnLogin','login')
+        }else {
+          window.alert("密码修改失败")
+        }
+      },
+      alterRequestError(err){
+        this.$store.commit('needLoading',false)
+        this.$store.commit('rsErrorStatus',err.response.status)
+        this.$router.push("/request-deny")
+      },
       alterCommit(identity,userId){
         if(this.infoComplete){
           switch (identity) {
             case 'student':
               asyn ({
-                methods: 'post',
+                method: 'post',
                 url: '/student/alterAccountInfo',
                 data: {
                   studentId: userId,
                   studentPassword: this.password
                 }
               }).then(rs=>{
-
+                this.alterRequestSuccess(rs)
               }).catch(err=>{
-
+                this.alterRequestError(err)
               });
               break;
             case 'teacher':
               asyn ({
-                methods: 'post',
+                method: 'post',
                 url: '/teacher/alterAccountInfo',
                 data: {
                   teacherId: userId,
                   teacherPassword: this.password
                 }
               }).then(rs=>{
-
+                this.alterRequestSuccess(rs)
               }).catch(err=>{
-
+                this.alterRequestError(err)
               })
               break;
             case 'admin':
               asyn ({
-                methods: 'post',
+                method: 'post',
                 url: '/teacher/alterAccountInfo',
                 data: {
                   administrationId: userId,
                   administrationPassword: this.password
                 }
               }).then(rs=>{
-
+                this.alterRequestSuccess(rs)
               }).catch(err=>{
-
+                this.alterRequestError(err)
               })
               break;
             default:

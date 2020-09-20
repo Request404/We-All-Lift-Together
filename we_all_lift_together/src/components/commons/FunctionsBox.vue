@@ -51,8 +51,11 @@
     background-color: rgba(22,22,22,.8);
     cursor: pointer;
     position: relative;
-    transition: 0.35s ease;
-    margin: 5px;
+    transition: 0.5s ease;
+    margin: 20px;
+  }
+  .function_box_container:hover{
+    transform: translateY(-3px);
   }
   .function_img_container{
     width: 100%;
@@ -108,15 +111,25 @@
   }
   @media screen and (max-width: 450px){
     .function_box_container{
-      width: 11rem;
-      height: 7.5rem;
+      border: 3px solid rgba(22,22,22,1);
+      width: 8rem;
+      height: 5.5rem;
     }
     .function_description_container>span{
       font-size: 1.5rem;
     }
+    .enter_go_logo>img{
+      width: 3rem;
+    }
+    .go_img{
+      width: 20px;
+      bottom: 5%;
+      left: 45%;
+    }
   }
   @media screen and (min-width: 450px) and (max-width: 860px){
     .function_box_container{
+
       width: 13rem;
       height: 8.5rem;
     }

@@ -13,6 +13,14 @@
         <img src="../../assets/img/student_page_img/test_background_img2.jpg" alt="">
       </template>
       <template v-slot:function_description>
+        <span>我的班级</span>
+      </template>
+    </functions-box>
+    <functions-box>
+      <template v-slot:function_img>
+        <img src="../../assets/img/student_page_img/test_background_img2.jpg" alt="">
+      </template>
+      <template v-slot:function_description>
         <span>我的课程</span>
       </template>
     </functions-box>
@@ -21,7 +29,7 @@
         <img src="../../assets/img/student_page_img/test_background_img3.jpg" alt="">
       </template>
       <template v-slot:function_description>
-        <span>成绩录入</span>
+        <span>成绩系统</span>
       </template>
     </functions-box>
     <functions-box>
@@ -29,7 +37,7 @@
         <img src="../../assets/img/student_page_img/test_background_img4.jpg" alt="">
       </template>
       <template v-slot:function_description>
-        <span>事务申请</span>
+        <span>学生事务</span>
       </template>
     </functions-box>
   </div>
@@ -57,7 +65,7 @@
   }
   @media screen and (max-width: 450px){
     #teacher_page_container{
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
     }
   }
   @media screen and (min-width: 450px) and (max-width: 860px){

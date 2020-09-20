@@ -69,12 +69,41 @@
       clearPassword(){
         this.password = ''
       } ,
+      studentLogin(){
+        //===========================
+        this.$router.replace('/EducationSystem/student-system')
+      },
+      teacherLogin(){
+        //===========================
+        this.$router.replace('/EducationSystem/teacher-system')
+      },
+      administrationLogin(){
+        //===========================
+        this.$router.replace('/EducationSystem/administration-system')
+      },
       loginRequestSuccess(rs){
-        this.$store.commit('needLoading',false)
         if (rs.data){
-          console.log(rs);
+          switch (this.identity) {
+            case 'student':
+              this.$store.commit('_loginSuccess_',true)
+              this.studentLogin()
+              break;
+            case 'teacher':
+              this.$store.commit('_loginSuccess_',true)
+              this.teacherLogin()
+              break;
+            case 'admin':
+              this.$store.commit('_loginSuccess_',true)
+              this.administrationLogin()
+              break;
+            default:
+              console.log("身份未被识别");
+          }
+          this.$store.commit('needLoading',false)
         }else {
+          this.clearPassword()
           this.loginFail()
+          this.$store.commit('needLoading',false)
         }
       },
       loginRequestError(err){
@@ -94,50 +123,95 @@
             case "student":
               this.$store.commit('needLoading',true)
               asyn({
-                method: "post",
-                url: "/student/userLogin",
-                data: {
-                  studentId: this.userId,
-                  studentPassword: this.password,
+                method: 'get',
+                url: '/student/queryAccountStatus',
+                params: {
+                  studentId: this.userId
                 }
               }).then(rs=>{
-                this.loginRequestSuccess(rs)
+                if(rs.data===100){
+                  asyn({
+                    method: "post",
+                    url: "/student/userLogin",
+                    data: {
+                      studentId: this.userId,
+                      studentPassword: this.password,
+                    }
+                  }).then(rs=>{
+                    this.loginRequestSuccess(rs)
+                  }).catch(err=>{
+                    this.loginRequestError(err)
+                  });
+                }else {
+                  this.clearPassword()
+                  this.loginFail()
+                  this.$store.commit('needLoading',false)
+                }
               }).catch(err=>{
                 this.loginRequestError(err)
-              });
-              this.clearPassword()
+              })
               break;
             case "teacher":
               this.$store.commit('needLoading',true)
               asyn({
-                method: "post",
-                url: "/teacher/userLogin",
-                data: {
-                  teacherId: this.userId,
-                  teacherPassword: this.password
+                method: 'get',
+                url: '/teacher/queryAccountStatus',
+                params: {
+                  teacherId: this.userId
                 }
               }).then(rs=>{
-                this.loginRequestSuccess(rs)
+                if (rs.data===100){
+                  asyn({
+                    method: "post",
+                    url: "/teacher/userLogin",
+                    data: {
+                      teacherId: this.userId,
+                      teacherPassword: this.password
+                    }
+                  }).then(rs=>{
+                    this.loginRequestSuccess(rs)
+                  }).catch(err=>{
+                    this.loginRequestError(err)
+                  });
+                }else {
+                  this.clearPassword()
+                  this.loginFail()
+                  this.$store.commit('needLoading',false)
+                }
               }).catch(err=>{
                 this.loginRequestError(err)
-              });
-              this.clearPassword()
+              })
               break;
             case "admin":
               this.$store.commit('needLoading',true)
               asyn({
-                method: "post",
-                url: "/admin/userLogin",
-                data: {
-                  administrationId: this.userId,
-                  administrationPassword: this.password
+                method: 'get',
+                url: '/admin/queryAccountStatus',
+                params: {
+                  administrationId: this.userId
                 }
               }).then(rs=>{
-                this.loginRequestSuccess(rs)
+                if(rs.data===100){
+                  asyn({
+                    method: "post",
+                    url: "/admin/userLogin",
+                    data: {
+                      administrationId: this.userId,
+                      administrationPassword: this.password
+                    }
+                  }).then(rs=>{
+                    this.loginRequestSuccess(rs)
+                  }).catch(err=>{
+                    this.loginRequestError(err)
+                  });
+                }else {
+                  this.clearPassword()
+                  this.loginFail()
+                  this.$store.commit('needLoading',false)
+                }
               }).catch(err=>{
-                this.loginRequestError(err)
-              });
-              this.clearPassword()
+                  this.loginRequestError(err)
+              })
               break;
             default:
               console.log("no identity");

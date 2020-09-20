@@ -10,16 +10,43 @@ const  state = {
   _verificationIdentity_: null,
   _verificationAccount_: null,
 
-  _responseStatus_: 200,
+  _responseStatus_: 400,
   _needLoading_: false,
-  _loginState_: null,
+  _loginState_: false,
   _UserIdentity_: null,
-  _loginUserInfo_: {
-
+  _UserId_: null,
+  _UserName_: null,
+  _UserPhoto_: null,
+  _studentRepository_: {
+    studentInfo: null,
+    studentAccount: null,
+    studentAffairs: null,
+    courseData: null,
+    studentElective: null,
+    electiveData: null,
+    studentTranscript: null,
   },
-  _coursesData_: [
-
-  ]
+  _teacherRepository_:{
+    teacherInfo: null,
+    teacherAccount: null,
+    studentAffairs: null,
+    courseData: null,
+    ElectiveData: null,
+    studentElective: null,
+    studentTranscript: null
+  },
+  adminRepository_:{
+    adminAccount: null,
+    studentInfo: null,
+    studentAccount: null,
+    teacherInfo: null,
+    teacherAccount: null,
+    studentAffairs: null,
+    courseData: null,
+    ElectiveData: null,
+    studentElective: null,
+    studentTranscript: null
+  },
 }
 
 

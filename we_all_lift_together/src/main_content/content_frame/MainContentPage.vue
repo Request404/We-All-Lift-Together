@@ -6,11 +6,11 @@
       </p>
       <div class="user_info_pane">
         <div class="user_info_">
-          <span class="user_name_">姓名:&nbsp;&nbsp; {{userName}}</span>
-          <span class="user_id_">账号:&nbsp;&nbsp; {{userId}}</span>
+          <span class="user_name_">姓名:&nbsp;&nbsp; {{$store.state._UserName_}}</span>
+          <span class="user_id_">账号:&nbsp;&nbsp; {{$store.state._UserId_}}</span>
         </div>
-        <div class="logout_img_">
-          <img src="../../assets/img/mian_content/logout.svg" alt="">
+        <div class="logout_img_" @click="userLogout">
+          <img src="../../assets/img/main_content/logout.svg" alt="">
         </div>
         <div class="user_avatar_">
           <img src="../../assets/img/student_page_img/test_touxiang.jpg" alt="">
@@ -32,8 +32,6 @@
     name: "MainContentPage",
     data(){
       return{
-        userName: "Dog!",
-        userId: 123456789,
         blatWord: [
           "真正的大师永远都怀着一颗学徒的心",
           "集中起来的意志可以击穿顽石",
@@ -42,10 +40,27 @@
         randomMun: 1
       }
     },
+    methods:{
+      userLogout(){
+        this.$store.commit('needLoading',true)
+        setTimeout(()=>{
+          this.$router.replace('/')
+          this.$store.commit('_dataDestroy_')
+        },750)
+
+      }
+    },
     mounted(){
       this.randomMun = Math.round(Math.random()*3);
       console.log(this.randomMun);
-    }
+    },
+    // created(){
+    //   if(this.$store._loginState_){
+    //     console.log("hello world");
+    //   }else {
+    //     this.$router.replace('/')
+    //   }
+    // }
   }
 </script>
 

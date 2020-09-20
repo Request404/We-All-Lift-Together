@@ -17,7 +17,7 @@ export default {
   name: "HomeAccountPane",
   data(){
     return{
-      accountOperate: 'alter'
+      accountOperate: 'login'
     }
   },
   methods:{

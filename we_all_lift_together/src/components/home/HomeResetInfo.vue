@@ -83,7 +83,9 @@ export default {
         this.$store.commit('_verificationIdentity_',this.alter_identity)
         this.$store.commit('_verificationAccount_',this.userId)
         this.$emit('alterPassword','alter')
+        console.log(rs.data);
       }else {
+        this.clearEmail()
         this.verificationFail()
       }
     },
@@ -104,50 +106,98 @@ export default {
           case "student":
             this.$store.commit('needLoading',true)
             asyn({
-              method: "post",
-              url: "/student/queryAccountInfoMatch",
-              data: {
-                studentId: this.userId,
-                studentEmail: this.email,
+              method: 'get',
+              url: '/student/queryAccountStatus',
+              params: {
+                studentId: this.userId
               }
             }).then(rs=>{
-              this.verRequestSuccess(rs)
+              console.log(rs);
+              if (rs.data===100){
+                asyn({
+                  method: "post",
+                  url: "/student/queryAccountInfoMatch",
+                  data: {
+                    studentId: this.userId,
+                    studentEmail: this.email,
+                  }
+                }).then(rs=>{
+                  console.log(rs);
+                  this.verRequestSuccess(rs)
+                }).catch(err=>{
+                  this.verRequestError(err)
+                });
+              }else {
+                this.clearEmail()
+                this.verificationFail()
+                this.$store.commit('needLoading',false)
+              }
             }).catch(err=>{
               this.verRequestError(err)
-            });
-            this.clearEmail()
+            })
             break;
           case "teacher":
             this.$store.commit('needLoading',true)
             asyn({
-              method: "post",
-              url: "/teacher/queryAccountInfoMatch",
-              data: {
-                teacherId: this.userId,
-                teacherEmail: this.email
+              method: 'get',
+              url: '/teacher/queryAccountStatus',
+              params: {
+                teacherId: this.userId
               }
             }).then(rs=>{
-              this.verRequestSuccess(rs)
+              if(rs.data){
+                asyn({
+                  method: "post",
+                  url: "/teacher/queryAccountInfoMatch",
+                  data: {
+                    teacherId: this.userId,
+                    teacherEmail: this.email
+                  }
+                }).then(rs=>{
+                  this.verRequestSuccess(rs)
+                }).catch(err=>{
+                  this.verRequestError(err)
+                });
+              }else {
+                this.clearEmail()
+                this.verificationFail()
+                this.$store.commit('needLoading',false)
+              }
             }).catch(err=>{
               this.verRequestError(err)
-            });
-            this.clearEmail()
+            })
             break;
           case "admin":
             this.$store.commit('needLoading',true)
             asyn({
-              method: "post",
-              url: "/admin/queryAccountInfoMatch",
-              data: {
-                administrationId: this.userId,
-                administrationIdEmail: this.email
+              method: 'get',
+              url: '/admin/queryAccountStatus',
+              params: {
+                administrationId: this.userId
               }
             }).then(rs=>{
-              this.verRequestSuccess(rs)
+              console.log(rs.data);
+              if (rs.data===100){
+                asyn({
+                  method: "post",
+                  url: "/admin/queryAccountInfoMatch",
+                  data: {
+                    administrationId: this.userId,
+                    administrationIdEmail: this.email
+                  }
+                }).then(rs=>{
+                  this.verRequestSuccess(rs)
+                }).catch(err=>{
+                  this.verRequestError(err)
+                });
+              }else {
+                this.clearEmail()
+                this.verificationFail()
+                this.$store.commit('needLoading',false)
+              }
             }).catch(err=>{
               this.verRequestError(err)
-            });
-            this.clearEmail()
+            })
             break;
           default:
             console.log("no identity");

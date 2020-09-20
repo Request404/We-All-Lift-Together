@@ -1,20 +1,12 @@
 <template>
   <div id="student_page_warp">
-    <div id="student_page_container" v-if="false">
+    <div id="student_page_container" v-if="true">
       <functions-box>
         <template v-slot:function_img>
           <img src="../../assets/img/student_page_img/test_background_img.jpg" alt="">
         </template>
         <template v-slot:function_description>
           <span>学生信息</span>
-        </template>
-      </functions-box>
-      <functions-box>
-        <template v-slot:function_img>
-          <img src="../../assets/img/student_page_img/test_background_img2.jpg" alt="">
-        </template>
-        <template v-slot:function_description>
-          <span>成绩查询</span>
         </template>
       </functions-box>
       <functions-box>
@@ -30,11 +22,27 @@
           <img src="../../assets/img/student_page_img/test_background_img4.jpg" alt="">
         </template>
         <template v-slot:function_description>
+          <span>噩梦选课</span>
+        </template>
+      </functions-box>
+      <functions-box>
+        <template v-slot:function_img>
+          <img src="../../assets/img/student_page_img/test_background_img2.jpg" alt="">
+        </template>
+        <template v-slot:function_description>
+          <span>成绩查询</span>
+        </template>
+      </functions-box>
+      <functions-box>
+        <template v-slot:function_img>
+          <img src="../../assets/img/student_page_img/test_background_img4.jpg" alt="">
+        </template>
+        <template v-slot:function_description>
           <span>事务申请</span>
         </template>
       </functions-box>
-    </div>
-    <student-info v-else-if="true"></student-info>
+    </div >
+    <student-info v-else-if="false"></student-info>
     <student-grade v-else-if="false"></student-grade>
     <student-application v-else-if="false"></student-application>
     <student-class-schedule v-else></student-class-schedule>
@@ -56,7 +64,7 @@
       StudentInfo,
       StudentClassSchedule,
       StudentGrade
-    }
+    },
   }
 </script>
 
@@ -78,7 +86,7 @@
   }
   @media screen and (max-width: 450px){
     #student_page_container{
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
     }
   }
   @media screen and (min-width: 450px) and (max-width: 860px){
