@@ -18,8 +18,8 @@ public class StudentController {
     @Autowired
     StudentUserService studentService;
 
-    @GetMapping("/queryStudentAccountStatus")
-    public Integer queryStudentAccountStatus(Integer studentId) {
+    @GetMapping("/queryAccountStatus")
+    public Integer queryAccountStatus(Integer studentId) {
         return studentService.queryAccountStatus(studentId);
     }
 

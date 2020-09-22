@@ -2,7 +2,7 @@
   <div id="teacher_page_container">
     <functions-box>
       <template v-slot:function_img>
-        <img src="../../assets/img/student_page_img/test_background_img.jpg" alt="">
+        <img src="../../assets/img/function_box/function_background6.jpg" alt="">
       </template>
       <template v-slot:function_description>
         <span>教师信息</span>
@@ -10,7 +10,7 @@
     </functions-box>
     <functions-box>
       <template v-slot:function_img>
-        <img src="../../assets/img/student_page_img/test_background_img2.jpg" alt="">
+        <img src="../../assets/img/function_box/function_background7.jpg" alt="">
       </template>
       <template v-slot:function_description>
         <span>我的班级</span>
@@ -18,7 +18,7 @@
     </functions-box>
     <functions-box>
       <template v-slot:function_img>
-        <img src="../../assets/img/student_page_img/test_background_img2.jpg" alt="">
+        <img src="../../assets/img/function_box/function_background8.jpg" alt="">
       </template>
       <template v-slot:function_description>
         <span>我的课程</span>
@@ -26,7 +26,7 @@
     </functions-box>
     <functions-box>
       <template v-slot:function_img>
-        <img src="../../assets/img/student_page_img/test_background_img3.jpg" alt="">
+        <img src="../../assets/img/function_box/function_background9.jpg" alt="">
       </template>
       <template v-slot:function_description>
         <span>成绩系统</span>
@@ -34,7 +34,7 @@
     </functions-box>
     <functions-box>
       <template v-slot:function_img>
-        <img src="../../assets/img/student_page_img/test_background_img4.jpg" alt="">
+        <img src="../../assets/img/function_box/function_background10.jpg" alt="">
       </template>
       <template v-slot:function_description>
         <span>学生事务</span>

@@ -10,7 +10,7 @@ const  state = {
   _verificationIdentity_: null,
   _verificationAccount_: null,
 
-  _responseStatus_: 400,
+  _responseStatus_: 200,
   _needLoading_: false,
   _loginState_: false,
   _UserIdentity_: null,
@@ -19,7 +19,6 @@ const  state = {
   _UserPhoto_: null,
   _studentRepository_: {
     studentInfo: null,
-    studentAccount: null,
     studentAffairs: null,
     courseData: null,
     studentElective: null,
@@ -28,14 +27,13 @@ const  state = {
   },
   _teacherRepository_:{
     teacherInfo: null,
-    teacherAccount: null,
     studentAffairs: null,
     courseData: null,
-    ElectiveData: null,
+    electiveData: null,
     studentElective: null,
     studentTranscript: null
   },
-  adminRepository_:{
+  _adminRepository_:{
     adminAccount: null,
     studentInfo: null,
     studentAccount: null,
@@ -43,7 +41,7 @@ const  state = {
     teacherAccount: null,
     studentAffairs: null,
     courseData: null,
-    ElectiveData: null,
+    electiveData: null,
     studentElective: null,
     studentTranscript: null
   },

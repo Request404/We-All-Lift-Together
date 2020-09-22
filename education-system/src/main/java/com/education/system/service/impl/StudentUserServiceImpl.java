@@ -26,7 +26,7 @@ public class StudentUserServiceImpl implements StudentUserService {
         StudentAccountExample example = new StudentAccountExample();
         example.createCriteria().andStudentIdEqualTo(studentId);
         List<StudentAccount> list = studentAccountMapper.selectByExample(example);
-        if (list != null) {
+        if (list.size()!=0) {
             return list.get(0).getStudentStatus();
         } else {
             return 0;
@@ -46,7 +46,6 @@ public class StudentUserServiceImpl implements StudentUserService {
         StudentAccountExample example = new StudentAccountExample();
         example.createCriteria().andStudentIdEqualTo(studentAccount.getStudentId()).andStudentPasswordEqualTo(studentAccount.getStudentPassword());
         List<StudentAccount> accounts = studentAccountMapper.selectByExample(example);
-        System.out.println(accounts);
         return accounts.size() != 0;
     }
 
