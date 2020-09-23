@@ -1,9 +1,7 @@
 # Create World
 Young man , never give up yourself that change the world
 
-## --找图片，背景图，要超清的；WWT，A级考不过的，别考了
-## --插数据，选修、必修课表多插几条，教师要求10个，管理员3条，学生要2个班级以上，要15条，
-## --WWT别偷懒
+## 祝WWT英语A级喜提59分
 
 ### 功能模块
 #### 学生、教师、管理员，先查询账户状态再进行登录操作
@@ -38,6 +36,8 @@ alterInfoById(StudentInfo studentInfo)
 insertInfo(StudentInfo studentInfo)
 queryStudentByClass(String studentClass)
 queryIdIsExist(Integer id)
+queryAllAccount()
+queryAllInfo()
 ```
 
 ```java
@@ -51,6 +51,8 @@ queryInfoById(Integer id)
 alterInfoById(TeacherInfo teacherInfo)
 insertInfo(TeacherInfo teacherInfo)
 queryIdIsExist(Integer id)
+queryAllAccount()
+queryAllInfo()
 ```
 
 ```JAVA
