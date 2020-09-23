@@ -55,13 +55,13 @@
       this.randomMun = Math.round(Math.random()*3);
       console.log(this.randomMun);
     },
-    created(){
-      if(this.$store._loginState_){
-        console.log("hello world");
-      }else {
-        this.$router.replace('/')
-      }
-    }
+    // created(){
+    //   if(this.$store._loginState_){
+    //     console.log("hello world");
+    //   }else {
+    //     this.$router.replace('/')
+    //   }
+    // }
   }
 </script>
 

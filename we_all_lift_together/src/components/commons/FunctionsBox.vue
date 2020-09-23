@@ -53,6 +53,7 @@
     position: relative;
     transition: 0.5s ease;
     margin: 20px;
+    opacity: .95;
   }
   .function_box_container:hover{
     transform: translateY(-3px);

@@ -60,7 +60,7 @@ export default {
   mounted() {
     setTimeout(()=>{
       // this.$refs.home_account_warp.style.transition = '1.2s ease'
-      this.$refs.home_account_warp.style.opacity = 1
+      this.$refs.home_account_warp.style.opacity = "0.85"
       this.$refs.home_account_warp.style.transform = 'scale(1,1)'
       setTimeout(()=>{
         this.$refs.home_account_warp.style.transition = 'none'
