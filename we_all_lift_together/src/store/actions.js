@@ -1,8 +1,9 @@
 import {asyn} from "@/network/asyn";
 
 export default {
-  /*
-   *StudentRepository Request
+
+  /**
+   * *StudentRepository Request
   */
   requestStudentInfo(context){
     asyn({
@@ -82,17 +83,183 @@ export default {
 
 
 /**
- *
+ *TeacherRepository Request
  */
-  requestTeacherInfo(){
+  requestTeacherInfo(context){
+    asyn({
+      method:'get',
+      url:'/teacher/queryInfoById',
+      params:{
+        teacherId: context.state._UserId_
+      }
+    }).then(rs =>{
+      context.commit('teacherInfo',rs.data)
+    }).catch(err=>{
+      console.log(err)
+    })
+  },
+  requestTeacherStudentAffairs(context){
+    asyn({
+      method:'get',
+      url:'/teacher/queryAffairsByTeacher',
+      params:{
+        teacherId: context.state._UserId_
+      }
+    }).then(rs =>{
+      context.commit('teacherStudentAffairs',rs.data)
+    }).catch(err=>{
+      console.log(err)
+    })
+  },
+  requestTeacherCourseData(context){
+    asyn({
+      method:'get',
+      url:'/teacher/queryCourseByTeacherId',
+      params:{
+        teacherId: context.state._UserId_
+      }
+    }).then(rs =>{
+      context.commit('teacherCourseData',rs.data)
+    }).catch(err=>{
+      console.log(err)
+    })
+  },
+  requestTeacherElectiveData(context){
+    asyn({
+      method:'get',
+      url:'/teacher/queryElectiveByTeacherId',
+      params:{
+        teacherId: context.state._UserId_
+      }
+    }).then(rs =>{
+      context.commit('teacherElectiveData',rs.data)
+    }).catch(err=>{
+      console.log(err)
+    })
+  },
+  requestTeacherTranscript(context){
+    asyn({
+      method:'get',
+      url:'/teacher/queryTranscriptByTeacherId',
+      params:{
+        teacherId: context.state._UserId_
+      }
+    }).then(rs =>{
+      context.commit('teacherTranscript',rs.data)
+    }).catch(err=>{
+      console.log(err)
+    })
+  },
+  requestTeacherStudentElective(context){
+    for(let elective of context.state._teacherRepository_.electiveData){
+      asyn({
+        method:'get',
+        url:'/elective/queryStudentElectiveByElectiveId',
+        params: {
+          electiveId: elective.electiveId
+        }
+      }).then(rs =>{
+        console.log(rs.data);
+      }).catch(err=>{
+        console.log(err)
+      })
+    }
 
   },
-  requestTeacherStudentAffairs(){
 
+  /**
+   * AdminRepository Request
+   * @param context
+   */
+  requestAdminAllStudentInfo(context){
+    asyn({
+      method:'get',
+      url:'/student/queryAllInfo',
+    }).then(rs =>{
+      context.commit('adminAllStudentInfo',rs.data)
+    }).catch(err=>{
+      console.log(err)
+    })
   },
-  requestTeacherCourseData(){
-
+  requestAdminAllStudentAccount(context){
+    asyn({
+      method:'get',
+      url:'/student/queryAllAccount',
+    }).then(rs =>{
+      context.commit('adminAllStudentAccount',rs.data)
+    }).catch(err=>{
+      console.log(err)
+    })
   },
-  reqeustTeacherElective
-
+  requestAdminAllTeacherInfo(context){
+    asyn({
+      method:'get',
+      url:'/teacher/queryAllInfo',
+    }).then(rs =>{
+      context.commit('adminAllTeacherInfo',rs.data)
+    }).catch(err=>{
+      console.log(err)
+    })
+  },
+  requestAdminAllTeacherAccount(context){
+    asyn({
+      method:'get',
+      url:'/teacher/queryAllAccount',
+    }).then(rs =>{
+      context.commit('adminAllTeacherAccount',rs.data)
+    }).catch(err=>{
+      console.log(err)
+    })
+  },
+  requestAdminAllStudentAffairs(context){
+    asyn({
+      method:'get',
+      url:'/studentAffairs/queryAllAffairs',
+    }).then(rs =>{
+      context.commit('adminAllStudentAffairs',rs.data)
+    }).catch(err=>{
+      console.log(err)
+    })
+  },
+  requestAdminAllCourseData(context){
+    asyn({
+      method:'get',
+      url:'/course/queryAllCourse',
+    }).then(rs =>{
+      context.commit('adminAllCourseData',rs.data)
+    }).catch(err=>{
+      console.log(err)
+    })
+  },
+  requestAdminAllElectiveData(context){
+    asyn({
+      method:'get',
+      url:'/elective/queryAllElective',
+    }).then(rs =>{
+      context.commit('adminAllElectiveData',rs.data)
+    }).catch(err=>{
+      console.log(err)
+    })
+  },
+  requestAdminAllStudentTranscript(context){
+    asyn({
+      method:'get',
+      url:'/course/queryAllTranscript',
+    }).then(rs =>{
+      context.commit('adminAllStudentTranscript',rs.data)
+    }).catch(err=>{
+      console.log(err)
+    })
+  },
+  requestAdminAllStudentElective(context){
+    asyn({
+      method:'get',
+      url:'/elective/queryAllStudentElective',
+    }).then(rs =>{
+      context.commit('adminAllStudentElective',rs.data)
+    }).catch(err=>{
+      console.log(err)
+    })
+  },
+  
 }

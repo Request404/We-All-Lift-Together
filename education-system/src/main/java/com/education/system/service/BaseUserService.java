@@ -15,6 +15,9 @@ public interface BaseUserService<T,U> {
     //按照id、密码登录
     public boolean userLogin(T t);
 
+    //查询所有账户
+    public List<T> queryAllAccount();
+
     //修改账户信息
     public Integer alterAccountInfo(T t);
 
@@ -30,5 +33,9 @@ public interface BaseUserService<T,U> {
     //新建信息
     public Integer insertInfo(U u);
 
+    //查询所有信息
+    public List<U> queryAllInfo();
+
+    //按照查询用户是否存在
     public boolean queryIdIsExist(Integer id);
 }

@@ -34,6 +34,11 @@ public class StudentController {
         return studentService.userLogin(studentAccount);
     }
 
+    @GetMapping("/queryAllAccount")
+    public List<StudentAccount> queryAllAccount(){
+        return studentService.queryAllAccount();
+    }
+
     @PostMapping("/alterAccountInfo")
     public Integer alterAccountInfo(@RequestBody StudentAccount studentAccount) {
         return studentService.alterAccountInfo(studentAccount);
@@ -62,6 +67,11 @@ public class StudentController {
     @GetMapping("/queryStudentByClass")
     public List<StudentInfo> queryStudentByClass(String studentClass) {
         return studentService.queryStudentByClass(studentClass);
+    }
+
+    @GetMapping("/queryAllInfo")
+    public List<StudentInfo> queryAllInfo(){
+        return studentService.queryAllInfo();
     }
 
     @GetMapping("/queryIdIsExist")

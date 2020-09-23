@@ -1,5 +1,7 @@
 <template>
   <div id="main_content_container">
+    <video src="../../assets/img/background-video/background-video.mp4" autoplay="" muted="" loop=""
+           id="content_background_video" poster="../../assets/img/home_img/home_background.jpg"></video>
     <div id="user_tab_bar">
       <p class="a_blat_word">
         {{blatWord[randomMun]}}
@@ -47,20 +49,19 @@
           this.$router.replace('/')
           this.$store.commit('_dataDestroy_')
         },750)
-
       }
     },
     mounted(){
       this.randomMun = Math.round(Math.random()*3);
       console.log(this.randomMun);
     },
-    // created(){
-    //   if(this.$store._loginState_){
-    //     console.log("hello world");
-    //   }else {
-    //     this.$router.replace('/')
-    //   }
-    // }
+    created(){
+      if(this.$store._loginState_){
+        console.log("hello world");
+      }else {
+        this.$router.replace('/')
+      }
+    }
   }
 </script>
 
@@ -69,12 +70,12 @@
     width: 100%;
     height: 100%;
     min-height: 700px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: url("../../assets/img/student_page_img/test_background.jpg");
-    background-position: center center;
-    background-size: auto 150%;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*background-image: url("../../assets/img/student_page_img/test_background.jpg");*/
+    /*background-position: center center;*/
+    /*background-size: auto 150%;*/
     user-select: none;
   }
   #user_tab_bar{
@@ -86,13 +87,32 @@
   }
   #main_content_page{
     width: 100%;
-    height: auto;
-    min-height: 85%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: 85%;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
+
+  #main_content_container>div::-webkit-scrollbar {
+    width: 8px;
+    height: 1px;
+  }
+  /*滚动条滑块*/
+  #main_content_container>div::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background-color: rgba(22,22,22,.4);
+  }
+  /*滚动条轨道*/
+  #main_content_container>div::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0);
+    border-radius: 8px;
+    background-color: rgba(122,122,122,.5);
+  }
+
   .a_blat_word{
     font-size: 2rem;
     color: seashell;
@@ -158,6 +178,13 @@
     width: 100%;
     height: auto;
   }
+  #content_background_video{
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     position: absolute;
+     z-index: -1;
+   }
   @media screen and (max-width: 700px){
     .a_blat_word{
       display: none;

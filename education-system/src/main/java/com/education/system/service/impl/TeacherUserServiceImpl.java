@@ -3,6 +3,7 @@ package com.education.system.service.impl;
 import com.education.system.entity.TeacherAccount;
 import com.education.system.entity.TeacherAccountExample;
 import com.education.system.entity.TeacherInfo;
+import com.education.system.entity.TeacherInfoExample;
 import com.education.system.mapper.TeacherAccountMapper;
 import com.education.system.mapper.TeacherInfoMapper;
 import com.education.system.service.TeacherUserService;
@@ -47,6 +48,14 @@ public class TeacherUserServiceImpl implements TeacherUserService {
     }
 
     @Override
+    public List<TeacherAccount> queryAllAccount() {
+        TeacherAccountExample example = new TeacherAccountExample();
+        example.setOrderByClause("teacher_id DESC");
+        List<TeacherAccount> accounts = teacherAccountMapper.selectByExample(example);
+        return accounts;
+    }
+
+    @Override
     public Integer alterAccountInfo(TeacherAccount teacherAccount) {
         return teacherAccountMapper.updateByPrimaryKeySelective(teacherAccount);
     }
@@ -69,6 +78,14 @@ public class TeacherUserServiceImpl implements TeacherUserService {
     @Override
     public Integer insertInfo(TeacherInfo teacherInfo) {
         return teacherInfoMapper.insertSelective(teacherInfo);
+    }
+
+    @Override
+    public List<TeacherInfo> queryAllInfo() {
+        TeacherInfoExample example = new TeacherInfoExample();
+        example.setOrderByClause("teacher_id DESC");
+        List<TeacherInfo> infos = teacherInfoMapper.selectByExample(example);
+        return infos;
     }
 
     @Override

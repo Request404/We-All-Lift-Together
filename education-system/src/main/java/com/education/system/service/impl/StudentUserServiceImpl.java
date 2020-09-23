@@ -50,6 +50,14 @@ public class StudentUserServiceImpl implements StudentUserService {
     }
 
     @Override
+    public List<StudentAccount> queryAllAccount() {
+        StudentAccountExample example = new StudentAccountExample();
+        example.setOrderByClause("student_id DESC");
+        List<StudentAccount> accounts = studentAccountMapper.selectByExample(example);
+        return accounts;
+    }
+
+    @Override
     public Integer alterAccountInfo(StudentAccount studentAccount) {
         StudentAccountExample example = new StudentAccountExample();
         example.createCriteria().andStudentIdEqualTo(studentAccount.getStudentId());
@@ -74,6 +82,14 @@ public class StudentUserServiceImpl implements StudentUserService {
     @Override
     public Integer insertInfo(StudentInfo studentInfo) {
         return studentInfoMapper.insertSelective(studentInfo);
+    }
+
+    @Override
+    public List<StudentInfo> queryAllInfo() {
+        StudentInfoExample example = new StudentInfoExample();
+        example.setOrderByClause("student_id DESC");
+        List<StudentInfo> infos = studentInfoMapper.selectByExample(example);
+        return infos;
     }
 
     @Override

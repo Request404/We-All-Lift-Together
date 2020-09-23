@@ -54,7 +54,7 @@ export default {
   },
 
   adminAllStudentInfo(state,students){
-    state._adminRepository_.studentInfo = student
+    state._adminRepository_.studentInfo = students
   },
   adminAllStudentAccount(state,accounts){
     state._adminRepository_.studentAccount = accounts

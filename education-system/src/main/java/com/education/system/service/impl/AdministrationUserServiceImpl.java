@@ -42,6 +42,11 @@ public class AdministrationUserServiceImpl implements AdministrationUserService 
     }
 
     @Override
+    public List<AdminAccount> queryAllAccount() {
+        return null;
+    }
+
+    @Override
     public Integer alterAccountInfo(AdminAccount adminAccount) {
         return adminAccountMapper.updateByPrimaryKeySelective(adminAccount);
     }
@@ -78,6 +83,10 @@ public class AdministrationUserServiceImpl implements AdministrationUserService 
         return null;
     }
 
+    @Override
+    public List<Object> queryAllInfo() {
+        return null;
+    }
 
 
 }

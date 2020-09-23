@@ -6,6 +6,8 @@ import com.education.system.service.TeacherUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/teacher")
@@ -28,6 +30,11 @@ public class TeacherController {
     @PostMapping("/userLogin")
     public boolean userLogin(@RequestBody TeacherAccount teacherAccount) {
         return teacherUserService.userLogin(teacherAccount);
+    }
+
+    @GetMapping("/queryAllAccount")
+    public List<TeacherAccount> queryAllAccount(){
+        return teacherUserService.queryAllAccount();
     }
 
     @PostMapping("/alterAccountInfo")
@@ -53,6 +60,11 @@ public class TeacherController {
     @PostMapping("/insertInfo")
     public Integer insertInfo(TeacherInfo teacherInfo) {
         return teacherUserService.insertInfo(teacherInfo);
+    }
+
+    @GetMapping("/queryAllInfo")
+    public List<TeacherInfo> queryAllInfo(){
+        return teacherUserService.queryAllInfo();
     }
 
     @GetMapping("/queryIdIsExist")
