@@ -64,13 +64,13 @@ const routes = [
       {
         path:'student-system',
         component: StudentPage,
-        meta: {
-          title: '学生系统'
-        },
         children: [
           {
             path: '/',
-            component: StudentMainPage
+            component: StudentMainPage,
+            meta: {
+              title: '学生系统'
+            }
           },
           {
             path: 'student-info',
@@ -110,13 +110,13 @@ const routes = [
       },{
         path:'teacher-system',
         component: TeacherPage,
-        meta: {
-          title: '教师系统'
-        },
         children: [
           {
             path: '/',
-            component: TeacherMainPage
+            component: TeacherMainPage,
+            meta: {
+              title: '教师系统'
+            }
           },
           {
             path: 'teacher-info',
@@ -153,13 +153,13 @@ const routes = [
       },{
         path:'administration-system',
         component: AdministrationPage,
-        meta: {
-          title: '管理员系统'
-        },
         children: [
           {
             path: '/',
-            component: AdminMainPage
+            component: AdminMainPage,
+            meta: {
+              title: '管理员系统'
+            }
           },
           {
             path: 'student-system',

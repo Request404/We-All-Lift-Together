@@ -84,4 +84,16 @@ public class ElectiveServiceImpl implements ElectiveService {
     public Integer createStudentElective(StudentElective studentElective) {
         return studentElectiveMapper.insertSelective(studentElective);
     }
+
+    @Override
+    public Integer removeStudentElective(StudentElective studentElective) {
+        StudentElectiveExample example = new StudentElectiveExample();
+        example.createCriteria().andStudentIdEqualTo(studentElective.getStudentId()).andElectiveIdEqualTo(studentElective.getElectiveId());
+        return  studentElectiveMapper.deleteByExample(example);
+    }
+
+    @Override
+    public ElectiveData queryElectiveDataByElectiveId(Integer electiveId) {
+        return electiveDataMapper.selectByPrimaryKey(electiveId);
+    }
 }

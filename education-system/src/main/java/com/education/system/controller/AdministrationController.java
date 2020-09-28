@@ -14,8 +14,8 @@ public class AdministrationController {
     AdministrationUserService administrationUserService;
 
     @GetMapping("/queryAccountStatus")
-    public Integer queryAccountStatus(Integer id){
-       return administrationUserService.queryAccountStatus(id);
+    public Integer queryAccountStatus(Integer administrationId){
+       return administrationUserService.queryAccountStatus(administrationId);
     }
 
     @PostMapping("/queryAccountInfoMatch")
@@ -39,12 +39,12 @@ public class AdministrationController {
     }
 
     @GetMapping("/queryAdministrationInfo")
-    public AdminAccount queryAdministrationInfo(Integer adminId){
-        return administrationUserService.queryAdministrationInfo(adminId);
+    public AdminAccount queryAdministrationInfo(Integer administrationId){
+        return administrationUserService.queryAdministrationInfo(administrationId);
     }
 
     @GetMapping("/queryIdIsExist")
-    public  boolean queryIdIsExist(Integer id){
-        return administrationUserService.queryIdIsExist(id);
+    public  boolean queryIdIsExist(Integer administrationId){
+        return administrationUserService.queryIdIsExist(administrationId);
     }
 }

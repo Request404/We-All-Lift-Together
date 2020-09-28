@@ -2,6 +2,7 @@ package com.education.system.controller;
 
 import com.education.system.entity.ElectiveData;
 import com.education.system.entity.StudentElective;
+import com.education.system.mapper.StudentElectiveMapper;
 import com.education.system.service.ElectiveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -66,4 +67,14 @@ public class ElectiveController {
         return electiveService.createStudentElective(studentElective);
     }
 
+    @GetMapping("/queryElectiveDataByElectiveId")
+    public ElectiveData queryElectiveDataByElectiveId(Integer electiveId){
+        return electiveService.queryElectiveDataByElectiveId(electiveId);
+    }
+
+    @PostMapping("/removeStudentElective")
+    public Integer removeStudentElective(@RequestBody StudentElective studentElective){
+        System.out.println(studentElective);
+        return electiveService.removeStudentElective(studentElective);
+    }
 }

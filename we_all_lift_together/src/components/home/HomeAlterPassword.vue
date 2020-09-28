@@ -109,7 +109,7 @@
             case 'admin':
               asyn ({
                 method: 'post',
-                url: '/teacher/alterAccountInfo',
+                url: '/administration/alterAccountInfo',
                 data: {
                   administrationId: userId,
                   administrationPassword: this.password

@@ -14,6 +14,7 @@ export default {
       }
     }).then( rs => {
       context.commit('studentInfo',rs.data)
+      context.commit('_userName_',rs.data.studentName)
     }).catch( err => {
       console.log(err);
     })
@@ -26,6 +27,7 @@ export default {
         studentId: context.state._UserId_
       }
     }).then(rs=>{
+      console.log(rs.data);
       context.commit('studentAffairs',rs.data)
     }).catch(err=>{
       console.log(err);
@@ -76,11 +78,23 @@ export default {
       }
     }).then(rs=>{
       context.commit('studentElective',rs.data)
+      if (rs.data.length){
+        asyn({
+          method: 'get',
+          url: '/elective/queryElectiveDataByElectiveId',
+          params: {
+            electiveId: rs.data[0].electiveId
+          }
+        }).then(rs=>{
+          context.commit('studentElectiveDataInfo',rs.data)
+        }).catch(err=>{
+          console.log(err);
+        })
+      }
     }).catch(err=>{
       console.log(err);
     })
   },
-
 
 /**
  *TeacherRepository Request
@@ -93,7 +107,9 @@ export default {
         teacherId: context.state._UserId_
       }
     }).then(rs =>{
+      console.log(rs.data);
       context.commit('teacherInfo',rs.data)
+      context.commit('_userName_',rs.data.teacherName)
     }).catch(err=>{
       console.log(err)
     })
@@ -106,6 +122,7 @@ export default {
         teacherId: context.state._UserId_
       }
     }).then(rs =>{
+      console.log(rs.data);
       context.commit('teacherStudentAffairs',rs.data)
     }).catch(err=>{
       console.log(err)
@@ -119,6 +136,7 @@ export default {
         teacherId: context.state._UserId_
       }
     }).then(rs =>{
+      console.log(rs.data);
       context.commit('teacherCourseData',rs.data)
     }).catch(err=>{
       console.log(err)
@@ -132,6 +150,7 @@ export default {
         teacherId: context.state._UserId_
       }
     }).then(rs =>{
+      console.log(rs.data);
       context.commit('teacherElectiveData',rs.data)
     }).catch(err=>{
       console.log(err)
@@ -145,6 +164,7 @@ export default {
         teacherId: context.state._UserId_
       }
     }).then(rs =>{
+      console.log(rs.data);
       context.commit('teacherTranscript',rs.data)
     }).catch(err=>{
       console.log(err)
@@ -171,6 +191,21 @@ export default {
    * AdminRepository Request
    * @param context
    */
+
+  requestAdminName(context){
+    console.log(context.state._UserId_);
+    asyn({
+      method: 'get',
+      url: '/administration/queryAdministrationInfo',
+      params:{
+        administrationId: context.state._UserId_
+      }
+    }).then(rs=>{
+      context.commit('_userName_',rs.data.adminName)
+    }).catch(err=>{
+      console.log(err);
+    })
+  },
   requestAdminAllStudentInfo(context){
     asyn({
       method:'get',

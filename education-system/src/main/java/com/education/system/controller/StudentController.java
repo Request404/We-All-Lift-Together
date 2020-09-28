@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@RequestMapping("/student")
 @CrossOrigin
 @RestController
+@RequestMapping("/student")
 public class StudentController {
 
     @Autowired
@@ -50,8 +50,8 @@ public class StudentController {
     }
 
     @GetMapping("/queryInfoById")
-    public StudentInfo queryInfoById(Integer id) {
-        return studentService.queryInfoById(id);
+    public StudentInfo queryInfoById(Integer studentId) {
+        return studentService.queryInfoById(studentId);
     }
 
     @PostMapping("/alterInfoById")

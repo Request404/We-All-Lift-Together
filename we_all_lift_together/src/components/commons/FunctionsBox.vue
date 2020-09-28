@@ -40,7 +40,7 @@
     width: 18.5rem;
     height: 12rem;
     overflow: hidden;
-    box-sizing: border-box;
+    box-sizing: border-box !important;
     border: 5px solid rgba(22,22,22,1);
     box-shadow: 1px 3px 15px rgba(22,22,22,.8);
     display: flex;

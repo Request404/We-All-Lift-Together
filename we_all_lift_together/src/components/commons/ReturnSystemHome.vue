@@ -25,7 +25,7 @@
     align-items: center;
   }
   .return_button_container>span{
-    color: gray;
+    color: whitesmoke;
     font-size: 1.3rem;
     line-height: 1rem;
     cursor: pointer;
@@ -33,6 +33,6 @@
     text-shadow: 1px 1px 3px rgba(22,22,22,.8);
   }
   .return_button_container>span:hover{
-    color: whitesmoke;
+    color: rgba(122,122,132,1);
   }
 </style>

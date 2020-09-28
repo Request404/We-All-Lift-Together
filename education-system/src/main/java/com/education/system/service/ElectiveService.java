@@ -36,4 +36,10 @@ public interface ElectiveService {
 
     //创建选课信息
     public Integer createStudentElective(StudentElective studentElective);
+
+    //选课退选
+    public Integer removeStudentElective(StudentElective studentElective);
+
+    //按照选课id查询选课数据
+    public ElectiveData queryElectiveDataByElectiveId(Integer electiveId);
 }

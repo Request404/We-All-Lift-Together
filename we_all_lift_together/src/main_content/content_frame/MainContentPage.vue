@@ -55,13 +55,13 @@
       this.randomMun = Math.round(Math.random()*3);
       console.log(this.randomMun);
     },
-    // created(){
-    //   if(this.$store._loginState_){
-    //     console.log("hello world");
-    //   }else {
-    //     this.$router.replace('/')
-    //   }
-    // }
+    created(){
+      // if(this.$store._loginState_){
+      //   console.log("hello world");
+      // }else {
+      //   this.$router.replace('/')
+      // }
+    }
   }
 </script>
 
@@ -120,6 +120,7 @@
     position: absolute;
     left: 5%;
     top: 8%;
+    margin: 24px 0 !important;
   }
   .user_info_pane{
     width: 19rem;

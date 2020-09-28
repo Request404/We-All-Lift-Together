@@ -29,4 +29,5 @@ export default {
     height: 100%;
     min-width: 310px;
   }
+
 </style>

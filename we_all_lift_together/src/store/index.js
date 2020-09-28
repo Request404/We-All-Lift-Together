@@ -16,14 +16,19 @@ const  state = {
   _UserIdentity_: null,
   _UserId_: null,
   _UserName_: null,
-  _UserPhoto_: null,
   _studentRepository_: {
     studentInfo: null,
     studentAffairs: null,
     courseData: null,
     studentElective: null,
-    electiveData: null,
+    electiveData: [],
     studentTranscript: null,
+    studentElectiveData: {
+      electiveId: 0,
+      electiveName: '',
+      teacherName: '',
+      electiveCredit: ''
+    }
   },
   _teacherRepository_:{
     teacherInfo: null,
@@ -34,7 +39,6 @@ const  state = {
     studentTranscript: null
   },
   _adminRepository_:{
-    adminAccount: null,
     studentInfo: null,
     studentAccount: null,
     teacherInfo: null,

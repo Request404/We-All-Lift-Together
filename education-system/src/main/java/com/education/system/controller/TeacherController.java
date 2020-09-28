@@ -48,8 +48,8 @@ public class TeacherController {
     }
 
     @GetMapping("/queryInfoById")
-    public TeacherInfo queryInfoById(Integer id) {
-        return teacherUserService.queryInfoById(id);
+    public TeacherInfo queryInfoById(Integer teacherId) {
+        return teacherUserService.queryInfoById(teacherId);
     }
 
     @PostMapping("/alterInfoById")
@@ -68,8 +68,8 @@ public class TeacherController {
     }
 
     @GetMapping("/queryIdIsExist")
-    public  boolean queryIdIsExist(Integer id){
-        return teacherUserService.queryIdIsExist(id);
+    public  boolean queryIdIsExist(Integer teacherId){
+        return teacherUserService.queryIdIsExist(teacherId);
     }
 
 }

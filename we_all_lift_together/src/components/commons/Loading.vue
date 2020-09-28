@@ -1,7 +1,7 @@
 <template>
   <div id="loading_container">
     <div id="loading_bar">
-      <img id="loading_img" src="../../assets/img/request_page/loading.svg" alt="">
+      <img id="loading_img" src="../../assets/img/request_page/Loading.svg" alt="">
     </div>
   </div>
 </template>

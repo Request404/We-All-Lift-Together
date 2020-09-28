@@ -14,6 +14,15 @@ export default {
   needLoading(state,loading){
     state._needLoading_ = loading
   },
+  _userId_(state,loading){
+    state._UserId_ = loading
+  },
+  _userIdentity_(state,loading){
+    state._UserIdentity_ = loading
+  },
+  _userName_(state,loading){
+    state._UserName_ = loading
+  },
 
   studentInfo(state,student){
     state._studentRepository_.studentInfo = student
@@ -32,6 +41,9 @@ export default {
   },
   studentElective(state,electives){
     state._studentRepository_.studentElective = electives
+  },
+  studentElectiveDataInfo(state,loading){
+    state._studentRepository_.studentElectiveData = loading
   },
 
   teacherInfo(state,teacher){
@@ -92,13 +104,18 @@ export default {
     state._UserName_=null
     state._UserPhoto_=null
     state._studentRepository_ = {
-      studentInfo: null,
-      studentAccount: null,
-      studentAffairs: null,
-      courseData: null,
-      studentElective: null,
-      electiveData: null,
-      studentTranscript: null,
+        studentInfo: null,
+        studentAffairs: null,
+        courseData: null,
+        studentElective: null,
+        electiveData: [],
+        studentTranscript: null,
+        studentElectiveData: {
+          electiveId: 0,
+          electiveName: '',
+          teacherName: '',
+          electiveCredit: ''
+        }
     }
     state._teacherRepository_ = {
       teacherInfo: null,
@@ -110,16 +127,15 @@ export default {
       studentTranscript: null
     }
     state._adminRepository_={
-      adminAccount: null,
-        studentInfo: null,
-        studentAccount: null,
-        teacherInfo: null,
-        teacherAccount: null,
-        studentAffairs: null,
-        courseData: null,
-        electiveData: null,
-        studentElective: null,
-        studentTranscript: null
+      studentInfo: null,
+      studentAccount: null,
+      teacherInfo: null,
+      teacherAccount: null,
+      studentAffairs: null,
+      courseData: null,
+      electiveData: null,
+      studentElective: null,
+      studentTranscript: null
     }
   }
 }

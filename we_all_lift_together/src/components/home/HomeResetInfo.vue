@@ -171,7 +171,7 @@ export default {
             this.$store.commit('needLoading',true)
             asyn({
               method: 'get',
-              url: '/admin/queryAccountStatus',
+              url: '/administration/queryAccountStatus',
               params: {
                 administrationId: this.userId
               }
@@ -180,7 +180,7 @@ export default {
               if (rs.data===100){
                 asyn({
                   method: "post",
-                  url: "/admin/queryAccountInfoMatch",
+                  url: "/administration/queryAccountInfoMatch",
                   data: {
                     administrationId: this.userId,
                     administrationIdEmail: this.email
@@ -227,6 +227,7 @@ export default {
   }
   #home_reset_headline{
     font-size: 2.5rem;
+    margin: 40px 0px !important;
   }
   .reset_input_warp{
     width: auto;

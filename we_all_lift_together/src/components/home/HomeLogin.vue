@@ -71,14 +71,28 @@
       } ,
       studentLogin(){
         //===========================
+        this.$store.commit('_userId_',this.userId)
+        this.$store.commit('_userIdentity_',this.identity)
+        this.$store.dispatch('requestStudentInfo')
+        this.$store.dispatch('requestElectiveData')
+        this.$store.dispatch('requestStudentElective')
+        this.$store.dispatch('requestStudentTranscript')
+        this.$store.dispatch('requestStudentAffairs')
         this.$router.replace('/EducationSystem/student-system')
       },
       teacherLogin(){
         //===========================
+        this.$store.commit('_userId_',this.userId)
+        this.$store.commit('_userIdentity_',this.identity)
+        this.$store.dispatch('requestTeacherInfo')
         this.$router.replace('/EducationSystem/teacher-system')
       },
       administrationLogin(){
         //===========================
+        this.$store.commit('_userId_',this.userId)
+        this.$store.commit('_userIdentity_',this.identity)
+        this.$store.dispatch('requestAdminName')
+        this.$store.dispatch('requestAdminAllElectiveData')
         this.$router.replace('/EducationSystem/administration-system')
       },
       loginRequestSuccess(rs){
@@ -86,10 +100,12 @@
           switch (this.identity) {
             case 'student':
               this.$store.commit('_loginSuccess_',true)
+              this.$store.commit('_userId_',this.userId)
               this.studentLogin()
               break;
             case 'teacher':
               this.$store.commit('_loginSuccess_',true)
+              this.$store.commit('_userId_',this.userId)
               this.teacherLogin()
               break;
             case 'admin':
@@ -186,7 +202,7 @@
               this.$store.commit('needLoading',true)
               asyn({
                 method: 'get',
-                url: '/admin/queryAccountStatus',
+                url: '/administration/queryAccountStatus',
                 params: {
                   administrationId: this.userId
                 }
@@ -194,10 +210,10 @@
                 if(rs.data===100){
                   asyn({
                     method: "post",
-                    url: "/admin/userLogin",
+                    url: "/administration/userLogin",
                     data: {
-                      administrationId: this.userId,
-                      administrationPassword: this.password
+                      adminId: this.userId,
+                      adminPassword: this.password
                     }
                   }).then(rs=>{
                     this.loginRequestSuccess(rs)
@@ -228,7 +244,7 @@
         this.$refs.login_button.style.backgroundColor = 'rgba(220,220,220,.9)'
         this.infoComplete = false
       }
-    }
+    },
   }
 </script>
 
@@ -241,6 +257,7 @@
   }
   #home_login_headline{
     font-size: 2.5rem;
+    margin: 40px 0px !important;
   }
   .login_input_warp{
     width: auto;
