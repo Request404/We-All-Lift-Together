@@ -1,7 +1,6 @@
 # Create World
 Young man , never give up yourself that change the world
 
-## 祝WWT英语A级喜提59分
 
 ### 功能模块
 #### 学生、教师、管理员，先查询账户状态再进行登录操作
